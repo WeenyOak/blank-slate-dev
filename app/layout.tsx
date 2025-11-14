@@ -1,8 +1,7 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { DefaultSeo } from "next-seo";
-import SEO from "@/next-seo.config";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,10 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="font-sans antialiased">
-        <DefaultSeo {...SEO} />
-        {children}
-      </body>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }

@@ -1,6 +1,8 @@
-import { DefaultSeoProps } from "next-seo";
+// next-seo.config.ts
 
-const config: DefaultSeoProps = {
+// We keep this as a plain config object (no typed import from "next-seo")
+// so TypeScript doesn't complain about missing DefaultSeoProps.
+const config = {
   titleTemplate: "%s | Blank Slate Dev",
   defaultTitle: "Blank Slate Dev — We build ideas into products",
   description:
@@ -24,6 +26,6 @@ const config: DefaultSeoProps = {
     site: "@blankslatedev",
     cardType: "summary_large_image",
   },
-};
+} as const;
 
 export default config;
