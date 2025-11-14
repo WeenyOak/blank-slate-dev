@@ -1,3 +1,4 @@
+// app/page.tsx
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Section from "@/components/section";
@@ -20,23 +21,27 @@ import {
   Shield,
   Zap,
   ArrowRight,
+  CheckCircle,
+  Users,
+  Clock,
+  Award,
 } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="relative min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50">
       <Header />
 
       {/* Hero Section */}
-      <Section className="relative overflow-hidden pt-32 pb-24 lg:pt-40 lg:pb-32">
+      <Section className="relative overflow-hidden pt-32 pb-24 lg:pt-44 lg:pb-36">
         <AnimatedGrid />
 
-        <div className="relative z-10 mx-auto max-w-5xl text-center">
+        <div className="relative z-10 mx-auto max-w-6xl text-center">
           <FadeIn>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-mint/20 bg-mint/5 px-4 py-2 text-sm font-medium text-teal-700">
-              <Sparkles className="h-4 w-4" />
-              <span className="shimmer animate-shimmer">
-                from idea to production
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50 px-5 py-2.5 shadow-sm">
+              <Sparkles className="h-4 w-4 text-emerald-600" />
+              <span className="text-sm font-semibold text-emerald-900">
+                Trusted by 50+ startups worldwide
               </span>
             </div>
           </FadeIn>
@@ -44,133 +49,70 @@ export default function Home() {
           <Wordmark />
 
           <SlideUp delay={0.2}>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600 sm:text-xl">
-              We design, build, and launch high-polish web apps for founders and
-              teams.
+            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-slate-600 sm:text-2xl sm:leading-relaxed">
+              We transform your vision into exceptional digital products with 
+              <span className="font-semibold text-slate-900"> cutting-edge technology</span> and 
+              <span className="font-semibold text-slate-900"> pixel-perfect design</span>.
             </p>
           </SlideUp>
 
           <SlideUp delay={0.4}>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <Button size="lg" className="group">
-                Start a project
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+              <Button size="xl" className="group shadow-lg hover:shadow-xl transition-all duration-300">
+                Start your project
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button size="lg" variant="outline">
-                See our work
+              <Button size="xl" variant="outline" className="border-2">
+                View case studies
               </Button>
+            </div>
+          </SlideUp>
+
+          <SlideUp delay={0.6}>
+            <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-emerald-600" />
+                <span className="text-slate-700 font-medium">2-week sprints</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-emerald-600" />
+                <span className="text-slate-700 font-medium">Fixed pricing</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-emerald-600" />
+                <span className="text-slate-700 font-medium">100% remote</span>
+              </div>
             </div>
           </SlideUp>
         </div>
       </Section>
 
       {/* Trust Logos */}
-      <Section className="border-y border-slate-100 bg-slate-50/50 py-12">
+      <Section className="border-y border-slate-200 bg-white py-16">
         <InViewOnce>
           <TrustLogos />
         </InViewOnce>
       </Section>
 
-      {/* What We Do */}
-      <Section className="py-24 lg:py-32">
+      {/* Stats Section */}
+      <Section className="py-24 lg:py-32 bg-gradient-to-b from-white to-slate-50">
         <InViewOnce>
-          <div className="text-center">
-            <FadeIn>
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                What we do
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-                End-to-end product development for startups and growing
-                companies.
-              </p>
-            </FadeIn>
-          </div>
-
-          <StaggerChildren className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <FeatureCard
-              icon={<Code2 className="h-6 w-6" />}
-              title="Build"
-              description="Modern web apps with React, Next.js, TypeScript, and best-in-class tooling."
-            />
-            <FeatureCard
-              icon={<Zap className="h-6 w-6" />}
-              title="Scale"
-              description="Infrastructure and architecture that grows with your business needs."
-            />
-            <FeatureCard
-              icon={<Blocks className="h-6 w-6" />}
-              title="Integrate"
-              description="Seamless API integrations, third-party services, and custom solutions."
-            />
-            <FeatureCard
-              icon={<Sparkles className="h-6 w-6" />}
-              title="Design systems"
-              description="Component libraries and design systems that maintain consistency."
-            />
-            <FeatureCard
-              icon={<Shield className="h-6 w-6" />}
-              title="Audits"
-              description="Performance, security, and accessibility reviews for existing apps."
-            />
-            <FeatureCard
-              icon={<Rocket className="h-6 w-6" />}
-              title="Launch"
-              description="Deploy with confidence using CI/CD, monitoring, and analytics."
-            />
-          </StaggerChildren>
-        </InViewOnce>
-      </Section>
-
-      {/* Process */}
-      <Section className="bg-slate-50 py-24 lg:py-32">
-        <InViewOnce>
-          <div className="text-center">
-            <FadeIn>
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                Our process
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-                A proven workflow from concept to deployment.
-              </p>
-            </FadeIn>
-          </div>
-
-          <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              {
-                step: "01",
-                title: "Scope",
-                description:
-                  "Define requirements, goals, and technical architecture together.",
-              },
-              {
-                step: "02",
-                title: "Design",
-                description:
-                  "Create wireframes, prototypes, and high-fidelity designs.",
-              },
-              {
-                step: "03",
-                title: "Build",
-                description:
-                  "Develop features iteratively with regular check-ins and demos.",
-              },
-              {
-                step: "04",
-                title: "Launch",
-                description:
-                  "Deploy, test, and hand off with documentation and training.",
-              },
-            ].map((item, idx) => (
+              { number: "120+", label: "Projects delivered", icon: <Rocket className="h-5 w-5" /> },
+              { number: "98%", label: "Client satisfaction", icon: <Award className="h-5 w-5" /> },
+              { number: "50+", label: "Happy clients", icon: <Users className="h-5 w-5" /> },
+              { number: "24hr", label: "Response time", icon: <Clock className="h-5 w-5" /> },
+            ].map((stat, idx) => (
               <SlideUp key={idx} delay={idx * 0.1}>
-                <div className="relative">
-                  <div className="text-6xl font-bold text-mint/20">
-                    {item.step}
+                <div className="text-center">
+                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-teal-100 to-emerald-100 text-teal-700">
+                    {stat.icon}
                   </div>
-                  <h3 className="mt-4 text-xl font-semibold text-slate-900">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-slate-600">{item.description}</p>
+                  <div className="text-4xl font-bold bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent">
+                    {stat.number}
+                  </div>
+                  <p className="mt-2 text-sm font-medium text-slate-600">{stat.label}</p>
                 </div>
               </SlideUp>
             ))}
@@ -178,53 +120,187 @@ export default function Home() {
         </InViewOnce>
       </Section>
 
-      {/* Work Preview */}
-      <Section className="py-24 lg:py-32">
+      {/* What We Do */}
+      <Section className="py-24 lg:py-32 bg-white">
         <InViewOnce>
           <div className="text-center">
             <FadeIn>
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                Recent work
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-slate-100 to-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
+                SERVICES
+              </div>
+              <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                What we do best
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-                Projects we're proud of.
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
+                Full-stack development expertise combined with world-class design to build products users love.
               </p>
             </FadeIn>
           </div>
 
-          <StaggerChildren className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <StaggerChildren className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <FeatureCard
+              icon={<Code2 className="h-6 w-6" />}
+              title="Full-Stack Development"
+              description="React, Next.js, Node.js, TypeScript. We build scalable applications with modern tech stacks."
+              gradient="from-blue-500 to-indigo-600"
+            />
+            <FeatureCard
+              icon={<Sparkles className="h-6 w-6" />}
+              title="UI/UX Design"
+              description="Beautiful, intuitive interfaces that delight users and drive engagement metrics."
+              gradient="from-purple-500 to-pink-600"
+            />
+            <FeatureCard
+              icon={<Zap className="h-6 w-6" />}
+              title="Performance Optimization"
+              description="Lightning-fast load times, SEO optimization, and Core Web Vitals excellence."
+              gradient="from-orange-500 to-red-600"
+            />
+            <FeatureCard
+              icon={<Blocks className="h-6 w-6" />}
+              title="API Development"
+              description="RESTful and GraphQL APIs, microservices, and seamless third-party integrations."
+              gradient="from-teal-500 to-emerald-600"
+            />
+            <FeatureCard
+              icon={<Shield className="h-6 w-6" />}
+              title="Security & Compliance"
+              description="Enterprise-grade security, GDPR compliance, and comprehensive testing."
+              gradient="from-green-500 to-teal-600"
+            />
+            <FeatureCard
+              icon={<Rocket className="h-6 w-6" />}
+              title="DevOps & Deployment"
+              description="CI/CD pipelines, cloud infrastructure, monitoring, and 24/7 support."
+              gradient="from-indigo-500 to-blue-600"
+            />
+          </StaggerChildren>
+        </InViewOnce>
+      </Section>
+
+      {/* Process */}
+      <Section className="bg-gradient-to-b from-slate-50 to-white py-24 lg:py-32">
+        <InViewOnce>
+          <div className="text-center">
+            <FadeIn>
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-slate-100 to-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
+                PROCESS
+              </div>
+              <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                How we work
+              </h2>
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
+                A battle-tested process refined over 120+ successful projects.
+              </p>
+            </FadeIn>
+          </div>
+
+          <div className="mt-20 relative">
+            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-slate-200 to-transparent transform -translate-y-1/2 hidden lg:block" />
+            <div className="grid gap-12 lg:grid-cols-4">
+              {[
+                {
+                  step: "01",
+                  title: "Discovery",
+                  description: "Deep dive into your vision, goals, and technical requirements.",
+                  color: "from-blue-500 to-indigo-600",
+                },
+                {
+                  step: "02",
+                  title: "Design",
+                  description: "Wireframes, prototypes, and pixel-perfect UI designs.",
+                  color: "from-purple-500 to-pink-600",
+                },
+                {
+                  step: "03",
+                  title: "Development",
+                  description: "Agile sprints with weekly demos and continuous deployment.",
+                  color: "from-orange-500 to-red-600",
+                },
+                {
+                  step: "04",
+                  title: "Launch",
+                  description: "Go live with confidence, backed by thorough testing and support.",
+                  color: "from-green-500 to-teal-600",
+                },
+              ].map((item, idx) => (
+                <SlideUp key={idx} delay={idx * 0.15}>
+                  <div className="relative text-center lg:text-left">
+                    <div className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${item.color} text-white font-bold text-xl shadow-lg mb-6`}>
+                      {item.step}
+                    </div>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-600 leading-relaxed">{item.description}</p>
+                  </div>
+                </SlideUp>
+              ))}
+            </div>
+          </div>
+        </InViewOnce>
+      </Section>
+
+      {/* Work Preview */}
+      <Section className="py-24 lg:py-32 bg-white">
+        <InViewOnce>
+          <div className="text-center">
+            <FadeIn>
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-slate-100 to-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
+                PORTFOLIO
+              </div>
+              <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                Recent work
+              </h2>
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
+                A selection of projects we're proud to showcase.
+              </p>
+            </FadeIn>
+          </div>
+
+          <StaggerChildren className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                title: "SaaS Dashboard",
-                description: "Analytics platform for B2B customers",
-                tags: ["Next.js", "TypeScript", "Tailwind"],
+                title: "FinTech Dashboard",
+                description: "Real-time analytics platform for cryptocurrency trading",
+                tags: ["Next.js", "WebSockets", "D3.js"],
+                gradient: "from-blue-400 to-purple-600",
               },
               {
-                title: "E-commerce Store",
-                description: "High-converting Shopify storefront",
-                tags: ["React", "Shopify", "Framer"],
+                title: "Healthcare Portal",
+                description: "HIPAA-compliant telemedicine platform with video consultations",
+                tags: ["React", "Node.js", "WebRTC"],
+                gradient: "from-green-400 to-teal-600",
               },
               {
-                title: "Mobile App MVP",
-                description: "React Native fitness tracking app",
-                tags: ["React Native", "Firebase", "Expo"],
+                title: "E-Learning Platform",
+                description: "Interactive education platform with AI-powered recommendations",
+                tags: ["Vue.js", "Python", "TensorFlow"],
+                gradient: "from-orange-400 to-pink-600",
               },
             ].map((project, idx) => (
               <Card
                 key={idx}
-                className="group overflow-hidden border-slate-200 transition-all hover:shadow-lg"
+                className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
               >
-                <div className="aspect-video bg-gradient-to-br from-teal-50 to-mint-50" />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-slate-900 group-hover:text-teal">
+                <div className={`aspect-video bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                      <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Case Study</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-slate-900 group-hover:text-teal-600 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="mt-2 text-slate-600">{project.description}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <p className="mt-3 text-slate-600 leading-relaxed">{project.description}</p>
+                  <div className="mt-6 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700"
+                        className="rounded-full bg-gradient-to-r from-slate-100 to-slate-50 px-4 py-1.5 text-xs font-semibold text-slate-700"
                       >
                         {tag}
                       </span>
@@ -234,48 +310,73 @@ export default function Home() {
               </Card>
             ))}
           </StaggerChildren>
+
+          <FadeIn>
+            <div className="mt-16 text-center">
+              <Button size="lg" variant="outline" className="group border-2">
+                View all case studies
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </div>
+          </FadeIn>
         </InViewOnce>
       </Section>
 
       {/* Testimonials */}
-      <Section className="bg-slate-50 py-24 lg:py-32">
+      <Section className="bg-gradient-to-b from-slate-50 to-white py-24 lg:py-32">
         <InViewOnce>
           <div className="text-center">
             <FadeIn>
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                What clients say
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-slate-100 to-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
+                TESTIMONIALS
+              </div>
+              <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                Client success stories
               </h2>
             </FadeIn>
           </div>
 
-          <StaggerChildren className="mt-16 grid gap-8 md:grid-cols-3">
+          <StaggerChildren className="mt-20 grid gap-8 md:grid-cols-3">
             {[
               {
-                quote:
-                  "Blank Slate delivered our MVP in record time. Their attention to detail and code quality is outstanding.",
+                quote: "Blank Slate Dev transformed our startup vision into a world-class product. Their technical expertise and attention to detail exceeded all expectations.",
                 author: "Sarah Chen",
-                role: "Founder, TechStart",
+                role: "CEO & Founder",
+                company: "TechStart",
+                gradient: "from-blue-500 to-purple-600",
               },
               {
-                quote:
-                  "Working with them felt like having a senior engineering team on demand. Highly recommended.",
+                quote: "Working with them was like having a senior engineering team on demand. They delivered our MVP 2 weeks ahead of schedule with zero compromises on quality.",
                 author: "Michael Rodriguez",
-                role: "CTO, Growth Co",
+                role: "CTO",
+                company: "Growth Co",
+                gradient: "from-green-500 to-teal-600",
               },
               {
-                quote:
-                  "They transformed our design mockups into a production-ready app that exceeded our expectations.",
+                quote: "The best development partner we've ever worked with. They don't just code – they understand business goals and deliver solutions that drive real results.",
                 author: "Emily Watson",
-                role: "Product Lead, ScaleUp",
+                role: "Head of Product",
+                company: "ScaleUp Inc",
+                gradient: "from-orange-500 to-pink-600",
               },
             ].map((testimonial, idx) => (
-              <Card key={idx} className="border-slate-200 p-8">
-                <p className="text-slate-700">"{testimonial.quote}"</p>
-                <div className="mt-6">
-                  <p className="font-semibold text-slate-900">
-                    {testimonial.author}
+              <Card key={idx} className="relative overflow-hidden border-0 shadow-lg p-8">
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${testimonial.gradient}`} />
+                <div className="flex flex-col h-full">
+                  <div className="mb-6">
+                    <svg className="h-8 w-8 text-slate-300" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                  </div>
+                  <p className="flex-grow text-lg text-slate-700 leading-relaxed italic">
+                    "{testimonial.quote}"
                   </p>
-                  <p className="text-sm text-slate-500">{testimonial.role}</p>
+                  <div className="mt-8 pt-6 border-t border-slate-100">
+                    <p className="font-bold text-slate-900">{testimonial.author}</p>
+                    <p className="text-sm text-slate-600">
+                      {testimonial.role} • {testimonial.company}
+                    </p>
+                  </div>
                 </div>
               </Card>
             ))}

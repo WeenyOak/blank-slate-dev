@@ -1,3 +1,4 @@
+// components/contact-cta.tsx
 "use client";
 
 import { useState } from "react";
@@ -11,108 +12,146 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
+import { motion } from "framer-motion";
 
 export default function ContactCTA() {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
     console.log("Form submitted");
     setIsOpen(false);
   };
 
   return (
-    <Section className="py-24 lg:py-32">
+    <Section className="py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50" />
+      
       <FadeIn>
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-teal to-teal-700 px-8 py-16 text-center sm:px-16 lg:px-24 lg:py-24">
-          <div className="relative z-10">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Ready to start your project?
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-mint-100">
-              Let's talk about your idea and how we can bring it to life.
-            </p>
-
-            <Dialog open={isOpen} onOpenChange={setIsOpen}>
-              <DialogTrigger asChild>
-                <Button
-                  size="lg"
-                  variant="secondary"
-                  className="group mt-8 bg-white text-teal hover:bg-mint-50"
+        <motion.div 
+          className="relative"
+          initial={{ scale: 0.95, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 p-2">
+            <div className="rounded-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 px-12 py-20 text-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-black/10" />
+              
+              <motion.div
+                animate={{
+                  rotate: [0, 360],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                className="absolute -top-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"
+              />
+              
+              <div className="relative z-10">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
+                  className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm mb-8"
                 >
-                  Get in touch
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Start a project</DialogTitle>
-                  <DialogDescription>
-                    Fill out the form below and we'll get back to you within 24
-                    hours.
-                  </DialogDescription>
-                </DialogHeader>
+                  <Sparkles className="w-8 h-8 text-white" />
+                </motion.div>
+                
+                <h2 className="text-5xl font-black text-white mb-6">
+                  Ready to build something amazing?
+                </h2>
+                <p className="mx-auto max-w-2xl text-xl text-emerald-50 mb-12">
+                  Let's turn your vision into reality. Get a free consultation and project estimate.
+                </p>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="mb-2 block text-sm font-medium text-slate-700"
+                <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                  <DialogTrigger asChild>
+                    <Button
+                      size="xl"
+                      className="bg-white text-emerald-600 hover:bg-emerald-50 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-lg px-10 py-6"
                     >
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      required
-                      className="w-full rounded-md border border-slate-300 px-4 py-2 focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20"
-                    />
-                  </div>
+                      Start your project
+                      <ArrowRight className="ml-3 h-6 w-6" />
+                    </Button>
+                  </DialogTrigger>
+                  
+                  <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl font-bold">Let's get started</DialogTitle>
+                      <DialogDescription className="text-base">
+                        Tell us about your project and we'll be in touch within 24 hours.
+                      </DialogDescription>
+                    </DialogHeader>
 
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="mb-2 block text-sm font-medium text-slate-700"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      required
-                      className="w-full rounded-md border border-slate-300 px-4 py-2 focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20"
-                    />
-                  </div>
+                    <form onSubmit={handleSubmit} className="space-y-5 mt-4">
+                      <div>
+                        <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">
+                          Your name
+                        </label>
+                        <input
+                          type="text"
+                          id="name"
+                          required
+                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-500/10 transition-all"
+                          placeholder="John Doe"
+                        />
+                      </div>
 
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="mb-2 block text-sm font-medium text-slate-700"
-                    >
-                      Tell us about your project
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={4}
-                      required
-                      className="w-full rounded-md border border-slate-300 px-4 py-2 focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20"
-                    />
-                  </div>
+                      <div>
+                        <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">
+                          Email address
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          required
+                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-500/10 transition-all"
+                          placeholder="john@company.com"
+                        />
+                      </div>
 
-                  <Button type="submit" className="w-full">
-                    Send message
-                  </Button>
-                </form>
-              </DialogContent>
-            </Dialog>
+                      <div>
+                        <label htmlFor="company" className="block text-sm font-semibold text-slate-700 mb-2">
+                          Company (optional)
+                        </label>
+                        <input
+                          type="text"
+                          id="company"
+                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-500/10 transition-all"
+                          placeholder="Acme Inc."
+                        />
+                      </div>
+
+                      <div>
+                        <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
+                          Project details
+                        </label>
+                        <textarea
+                          id="message"
+                          rows={4}
+                          required
+                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-500/10 transition-all resize-none"
+                          placeholder="Tell us about your project, timeline, and budget..."
+                        />
+                      </div>
+
+                      <Button type="submit" className="w-full py-3 text-base font-semibold">
+                        Send message
+                      </Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </div>
           </div>
-
-          {/* Background decoration */}
-          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-        </div>
+        </motion.div>
       </FadeIn>
     </Section>
   );

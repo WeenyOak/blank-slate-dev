@@ -1,35 +1,30 @@
+// components/brand/wordmark.tsx
 "use client";
 
 import { motion } from "framer-motion";
 
 export default function Wordmark() {
-  const text = "Blank Slate Dev";
-  const words = text.split(" ");
-
   return (
-    <h1 className="text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
-      {words.map((word, wordIndex) => (
-        <span key={wordIndex} className="inline-block">
-          {word.split("").map((char, charIndex) => (
-            <motion.span
-              key={charIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: (wordIndex * word.length + charIndex) * 0.03,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="inline-block"
-            >
-              {char}
-            </motion.span>
-          ))}
-          {wordIndex < words.length - 1 && (
-            <span className="inline-block">&nbsp;</span>
-          )}
+    <div className="relative">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight"
+      >
+        <span className="bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
+          Blank Slate
         </span>
-      ))}
-    </h1>
+        <span className="bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-600 bg-clip-text text-transparent">
+          {" "}Dev
+        </span>
+      </motion.h1>
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ delay: 0.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="mt-4 h-1 w-32 mx-auto bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
+      />
+    </div>
   );
 }

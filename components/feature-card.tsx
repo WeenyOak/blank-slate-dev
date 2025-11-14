@@ -1,3 +1,4 @@
+// components/feature-card.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -8,12 +9,14 @@ interface FeatureCardProps {
   icon: ReactNode;
   title: string;
   description: string;
+  gradient?: string;
 }
 
 export default function FeatureCard({
   icon,
   title,
   description,
+  gradient = "from-teal-500 to-emerald-600",
 }: FeatureCardProps) {
   return (
     <motion.div
@@ -21,13 +24,16 @@ export default function FeatureCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{ y: -5 }}
+      className="h-full"
     >
-      <Card className="group h-full border-slate-200 p-6 transition-all hover:border-mint hover:shadow-lg">
-        <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-teal/10 text-teal transition-colors group-hover:bg-mint/20 group-hover:text-teal-700">
+      <Card className="group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-300 p-8 relative overflow-hidden">
+        <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${gradient} opacity-5 blur-3xl group-hover:opacity-10 transition-opacity duration-300`} />
+        <div className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${gradient} text-white shadow-lg`}>
           {icon}
         </div>
-        <h3 className="mb-2 text-xl font-semibold text-slate-900">{title}</h3>
-        <p className="text-slate-600">{description}</p>
+        <h3 className="mb-3 text-2xl font-bold text-slate-900">{title}</h3>
+        <p className="text-slate-600 leading-relaxed">{description}</p>
       </Card>
     </motion.div>
   );
